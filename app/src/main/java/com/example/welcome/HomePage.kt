@@ -34,148 +34,58 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material3.Text
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import com.example.mysmarthome.ui.components.ButtonList
 
 @Composable
-fun HomePage(modifier: Modifier = Modifier){
+fun HomePage(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxSize()
             .background(color = Color.White)
             .padding(16.dp) // Padding to prevent overlap with screen edges
-    ){
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxSize(),
 //            verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
-        ){
+        ) {
             Spacer(modifier = Modifier.height(15.dp))
             Image(
                 painter = painterResource(id = R.drawable.dail),
-                contentDescription = "Daily Routine Icon",
+                contentDescription = "Daily com.example.welcome.Routine.Routine Icon",
                 modifier = Modifier.size(120.dp)
             )
-            Spacer(modifier = Modifier.height(15.dp))
+            Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "No things!",
-                fontSize = 40.sp,
-                color = Color.Gray,
-                fontWeight = FontWeight.SemiBold
+                fontSize = 30.sp,
+                textAlign = TextAlign.Center,
+                color = Color.Gray
             )
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = "It looks like we didn't discover any devices.",
-                fontSize = 19.sp,
-                color = Color.LightGray
+                fontSize = 18.sp,
+                textAlign = TextAlign.Center,
+                color = Color.Gray
             )
+            Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "Try an option below.",
-                fontSize = 19.sp,
-                color = Color.LightGray
+                fontSize = 18.sp,
+                textAlign = TextAlign.Center,
+                color = Color.Gray
             )
-            Spacer(modifier = Modifier.height(15.dp))
-            Divider(thickness = 2.dp, color = Color.LightGray)
+            Spacer(modifier = Modifier.height(16.dp))
+            Divider(modifier = Modifier.padding(start = 20.dp, end = 20.dp))
 
-
-            Row(
-                modifier = modifier.fillMaxWidth(0.9f),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Absolute.Left
-            ){
-                Button(
-                    onClick = { /*TODO*/ },
-                    shape = CircleShape,
-                    modifier = Modifier
-                        .padding(10.dp) // Padding to prevent clipping
-                        .size(60.dp), // Standard FAB size
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF03A9F4))
-                ){
-                    Icon(imageVector = Icons.Default.Search,
-                        contentDescription = null,
-                        modifier = Modifier.size(40.dp))
-                }
-                Text(
-                    text = "Run discovery",
-                    color = Color(0xFF03A9F4),
-                    fontSize = 20.sp
-                )
-            }
-            Row(
-                modifier = modifier.fillMaxWidth(0.9f),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Absolute.Left
-            ){
-                Button(
-                    onClick = { /*TODO*/ },
-                    shape = CircleShape,
-                    modifier = Modifier
-                        .padding(10.dp) // Padding to prevent clipping
-                        .size(60.dp), // Standard FAB size
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF03A9F4))
-                ){
-                    Icon(imageVector = Icons.Default.Add,
-                        contentDescription = null,
-                        modifier = Modifier.size(40.dp))
-                }
-                Text(
-                    text = "Add cloud account",
-                    color = Color(0xFF03A9F4),
-                    fontSize = 20.sp
-                )
-            }
-            Row(
-                modifier = modifier.fillMaxWidth(0.9f),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Absolute.Left
-            ){
-                Button(
-                    onClick = { /*TODO*/ },
-                    shape = CircleShape,
-                    modifier = Modifier
-                        .padding(10.dp) // Padding to prevent clipping
-                        .size(60.dp), // Standard FAB size
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF03A9F4))
-                ){
-                    Icon(imageVector = Icons.Default.Menu,
-                        contentDescription = null,
-                        modifier = Modifier.size(40.dp))
-                }
-                Text(
-                    text = "View supported devices",
-                    color = Color(0xFF03A9F4),
-                    fontSize = 20.sp
-                )
-            }
-            Row(
-                modifier = modifier.fillMaxWidth(0.9f),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Absolute.Left
-            ){
-                Button(
-                    onClick = { /*TODO*/ },
-                    shape = CircleShape,
-                    modifier = Modifier
-                        .padding(10.dp) // Padding to prevent clipping
-                        .size(60.dp), // Standard FAB size
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF03A9F4))
-                ){
-                    Icon(imageVector = Icons.Default.Email,
-                        contentDescription = null,
-                        modifier = Modifier.size(40.dp))
-                }
-                Text(
-                    text = "Contact Support",
-                    color = Color(0xFF03A9F4),
-                    fontSize = 20.sp
-                )
-            }
-
+            Spacer(modifier = Modifier.height(10.dp))
+            ButtonList()
         }
-
     }
 }
-
-
 
 @Preview
 @Composable
