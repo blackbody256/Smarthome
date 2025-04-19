@@ -45,6 +45,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.vector.ImageVector
 import android.content.Context
 import androidx.activity.viewModels
+import androidx.compose.material.icons.filled.DevicesOther
+import androidx.compose.material.icons.filled.GridView
+import androidx.compose.material.icons.filled.History
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Lightbulb
+import androidx.compose.material.icons.filled.Tune
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -92,10 +98,10 @@ fun ScaffoldDemo(routineViewModel: RoutineViewModel) {
 
     val navitemList = listOf(
         Navitem("Favorites", Icons.Default.Star),
-        Navitem("Things", Icons.Default.ShoppingCart),
-        Navitem("Routines", Icons.Default.AccountBox),
-        Navitem("Ideas", Icons.Default.Notifications),
-        Navitem("Settings", Icons.Default.Settings),
+        Navitem("Things", Icons.Default.GridView),
+        Navitem("Routines", Icons.Default.History),
+        Navitem("Ideas", Icons.Default.Lightbulb),
+        Navitem("Settings", Icons.Default.Tune),
     )
 
     var selectedIndex by remember { mutableIntStateOf(0) }

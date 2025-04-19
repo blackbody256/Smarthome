@@ -93,6 +93,10 @@ dependencies {
     implementation(libs.androidx.room.runtime.android)
     kapt("androidx.room:room-compiler:2.7.0")
 
+    //icons
+    implementation(libs.androidx.material.icons.extended)
+
+
     // Tests
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
