@@ -16,7 +16,14 @@ import androidx.compose.ui.platform.LocalContext
 import java.util.*
 import java.util.Locale
 
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.runtime.*
 
+
+
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CreateRoutineScreen(
     state: RoutineState,
@@ -26,7 +33,8 @@ fun CreateRoutineScreen(
     //2 variables for the time picker
     val context = LocalContext.current //enables Android to know exactly where to open up the TimePickerDialog.
     val calendar = Calendar.getInstance() //creating a calender object. These objects can have the hour and minute which we need for the timepicker.
-
+    val recurrenceOptions = listOf("Day", "Week", "Month", "Year", "Week days", "Weekend")
+    var expanded by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -81,14 +89,49 @@ fun CreateRoutineScreen(
         }
 
 
-        OutlinedTextField(
-            value = state.recurrence.value,
-            onValueChange = { onEvent(RoutineEvents.updateRecurrence(it)) },
-            label = { Text("Recurrence") },
+//        OutlinedTextField(
+//            value = state.recurrence.value,
+//            onValueChange = { onEvent(RoutineEvents.updateRecurrence(it)) },
+//            label = { Text("Recurrence") },
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .padding(top = 16.dp)
+//        )
+
+
+        ExposedDropdownMenuBox(
+            expanded = expanded,
+            onExpandedChange = { expanded = !expanded },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp)
-        )
+        ) {
+            OutlinedTextField(
+                value = state.recurrence.value,
+                onValueChange = {},
+                readOnly = true,
+                label = { Text("Recurrence") },
+                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+                modifier = Modifier
+                    .menuAnchor()
+                    .fillMaxWidth()
+            )
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                recurrenceOptions.forEach { option ->
+                    DropdownMenuItem(
+                        text = { Text(option) },
+                        onClick = {
+                            onEvent(RoutineEvents.updateRecurrence(option))
+                            expanded = false
+                        }
+                    )
+                }
+            }
+        }
+
 
         Row(
             modifier = Modifier

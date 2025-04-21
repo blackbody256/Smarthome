@@ -8,8 +8,8 @@ import androidx.room.RoomDatabase
 import androidx.room.Room
 
 @Database(
-    entities = [Routine::class],
-    version = 1,
+    entities = [Routine::class], //entities are the tables in the database
+    version = 1, //version of the database
 
 )
 abstract class RoutineDatabase: RoomDatabase() {
@@ -19,12 +19,12 @@ abstract class RoutineDatabase: RoomDatabase() {
         @Volatile
         private var INSTANCE: RoutineDatabase? = null
 
-        fun getDatabase(context: Context): RoutineDatabase {
+        fun getDatabase(context: Context): RoutineDatabase { //getDatabase is a function that returns the database instance
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     RoutineDatabase::class.java,
-                    "routine_database"
+                    "routine_database" //name of the database
                 ).build()
                 INSTANCE = instance
                 instance
